@@ -1,0 +1,18 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: api-server
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5 #Eureka客户端的续约间隔时间(秒数)
+    instance-id: ${spring.application.name}-${server.port} #当前Eureka客户端在EurekaServer中状态名(该名称会显示在Eureka页面的Status栏)
+    prefer-ip-address: true #当前客户端注册到Eureka服务中时以IP地址的形式显示(默认会注册当前机器的主机名[例如:Desktop-lizhengpeng])
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka/,http://127.0.0.1:7999/eureka/ #Eureka服务端的交互地址
+info:
+  name: lizhengpeng
+  author: lizhengpeng

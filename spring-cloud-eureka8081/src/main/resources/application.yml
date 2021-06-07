@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 8081
+eureka:
+  instance:
+    hostname: eureka-sever #Eureka服务端实例的名字(相当于域名该地址可以通过DNS进行解析)
+    instance-id: ${eureka.instance.hostname}:${server.port} #设置当前Eureka服务的的ID标示
+  client:
+    service-url: #与Eureka进行交互的地址
+      defaultZone: http://127.0.0.1:8081/eureka/,http://127.0.0.1:7999/eureka/ #Eureka服务连接的地址
+    register-with-eureka: false #是否向Eureka服务注册自身(当前为服务端不需要配置)
+    fetch-registry: false #表示是否从Eureka中读取数据信息
+  server:
+    enable-self-preservation: false #是否开启Eureka的保护模式(短时间内大量客户端掉线会自动开启测试建议关闭生产建议开启)
+    eviction-interval-timer-in-ms: 5000 #驱逐下线的客户端的时间间隔(测试环境开启此项可测试客户端的快速下线)
