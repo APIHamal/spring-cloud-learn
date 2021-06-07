@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: controller-server
+server:
+  port: 8082
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7999/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true

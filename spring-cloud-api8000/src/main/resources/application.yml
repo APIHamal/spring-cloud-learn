@@ -12,7 +12,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://127.0.0.1:8081/eureka/,http://127.0.0.1:7999/eureka/ #Eureka服务端的交互地址
-info:
-  name: lizhengpeng
-  author: lizhengpeng
+      defaultZone: http://127.0.0.1:7999/eureka/ #Eureka服务端的交互地址
+feign:
+  hystrix:
+    enabled: true

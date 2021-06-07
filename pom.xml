@@ -8,6 +8,7 @@
         <module>spring-cloud-api8000</module>
         <module>spring-cloud-eureka8081</module>
         <module>spring-cloud-eureka7999</module>
+        <module>spring-cloud-server8082</module>
     </modules>
 
     <groupId>com.lizhengpeng.learn</groupId>
