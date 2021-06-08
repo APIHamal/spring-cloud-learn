@@ -11,6 +11,14 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * 文件系统作为存储则要开启spring.profiles.active=native启动当前的Config服务
  * 否则ConfigServer无法正常启动
  *
+ * ###客户端典型的配置文件方式
+ * spring:
+ *   cloud:
+ *     config:
+ *       uri: http://127.0.0.1:8085/ # 配置Config Server的地址
+ *       name: hystrix-server # 要从ConfigServer获取资源的名称
+ *       profile: default # 要从ConfigServer获取文件所属的Profile
+ *
  */
 @EnableConfigServer
 @SpringBootApplication
