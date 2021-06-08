@@ -1,0 +1,6 @@
+spring: # 配置SpringConfig客户端的属性
+  cloud:
+    config:
+      uri: http://127.0.0.1:8085/ # 配置ConfigServer的地址
+      profile: default            # 配置当前激活的场景模式
+      name: server-provide        # 配置要获取的文件的名称

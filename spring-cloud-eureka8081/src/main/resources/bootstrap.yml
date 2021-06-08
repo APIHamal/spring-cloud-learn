@@ -1,0 +1,10 @@
+server: # 配置SpringBoot服务端的属性
+  port: 8081
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config: # 配置SpringCloud Config客户端的请求
+      uri: http://127.0.0.1:8085/
+      profile: default
+      name: ${spring.application.name}

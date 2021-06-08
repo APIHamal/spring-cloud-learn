@@ -1,0 +1,19 @@
+server:
+  port: 8085 # 配置ConfigServer端的端口
+spring:
+  profiles:
+    active: native # 开启Config服务端必须配置该属性否则ConfigServer启动会报错
+  application:
+    name: config-server
+  cloud: # 配置Config服务端相关属性(native表示使用文件系统管理配置文件[默认使用Git进行配置文件管理])
+    config:
+      server:
+        native:
+          search-locations: classpath:/conf/
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+  client: # 配置Eureka客户端相关配置
+    service-url:
+      defaultZone: http://127.0.0.1:7999/eureka/,http://127.0.0.1:8081/eureka/

@@ -1,0 +1,6 @@
+spring: # 启用SpringCloud Config的客户端的配置
+  cloud:
+    config: # 开启SpringCloud Config客户端的配置
+      uri: http://127.0.0.1:8085/ #ConfigServer的HTTP连接地址
+      profile: default            #加载指定的场景模式(默认为default表示加载类似zuul-server.yml等文件)
+      name: zuul-server           #加载指定的文件的名称(指定名称即可不需要写全文件名zuul-server表示加载文件名称)

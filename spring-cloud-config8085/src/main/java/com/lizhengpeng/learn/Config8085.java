@@ -10,7 +10,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * config服务默认使用git作为后端存储库如果要使用
  * 文件系统作为存储则要开启spring.profiles.active=native启动当前的Config服务
  * 否则ConfigServer无法正常启动
- *
+ * 1)spring.profiles.active=native
+ *   配置文件系统作为后端存储服务时需要开启此选项否则会启动失败
  * ###客户端典型的配置文件方式
  * spring:
  *   cloud:
@@ -20,9 +21,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  *       profile: default # 要从ConfigServer获取文件所属的Profile
  *
  */
-@EnableConfigServer
 @SpringBootApplication
-//@EnableEurekaClient
+@EnableConfigServer
+@EnableEurekaClient
 public class Config8085 {
     public static void main(String[] args) {
         SpringApplication.run(Config8085.class, args);

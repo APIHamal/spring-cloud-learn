@@ -1,15 +1,12 @@
-server:
-  port: 8083
 spring:
   application:
-    name: hystrix-server
+    name: server-provide
+server:
+  port: 8082
 eureka:
   instance:
     instance-id: ${spring.application.name}:${server.port}
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://127.0.0.1:7999/eureka/
-feign:
-  hystrix:
-    enabled: true
+      defaultZone: http://127.0.0.1:7999/eureka/,http://127.0.0.1:8081/eureka/
