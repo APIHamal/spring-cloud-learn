@@ -1,0 +1,22 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: zuul-server
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7999/eureka/
+zuul:
+  routes:
+    api_route:
+      serviceId: CONTROLLER-SERVER
+      path: /controller/**
+    hystrix_toute:
+      serviceId: HYSTRIX-SERVER
+      path: /hystrix/**
+      stripPrefix: false
+  ignored-services: "*" ### 配置ZUUL不允许通过Eureka中的服务名调用原服务

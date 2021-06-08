@@ -1,0 +1,8 @@
+server:
+  port: 8086
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:8085/ #配置Config Server的地址
+  application:
+    name: hystrix-server

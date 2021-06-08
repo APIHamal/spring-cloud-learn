@@ -13,11 +13,20 @@ public class Server8082 {
 
     @GetMapping("/sayHello")
     public String sayHello(String name){
-        if(name.length() <= 100){
-            throw new RuntimeException("字符串数据长度小于100");
+        if(name == null || name.trim().length() == 0){
+            name = "empty text";
         }
         return "hello:"+name+",this is API-SERVER";
     }
+
+    @GetMapping("/sayHelloException")
+    public String sayHelloException(String name){
+        if(name == null || name.trim().length() == 0){
+            throw new IllegalArgumentException("name参数为空");
+        }
+        return "hello:"+name+",this is API-SERVER";
+    }
+
 
     public static void main(String[] args) {
         SpringApplication.run(Server8082.class, args);

@@ -9,6 +9,9 @@
         <module>spring-cloud-eureka8081</module>
         <module>spring-cloud-eureka7999</module>
         <module>spring-cloud-server8082</module>
+        <module>spring-cloud-hystrix8083</module>
+        <module>spring-cloud-zuul8084</module>
+        <module>spring-cloud-config8085</module>
     </modules>
 
     <groupId>com.lizhengpeng.learn</groupId>
