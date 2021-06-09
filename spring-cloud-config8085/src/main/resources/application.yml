@@ -12,8 +12,8 @@ spring:
           search-locations: classpath:/conf/
 eureka:
   instance:
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
     prefer-ip-address: true
   client: # 配置Eureka客户端相关配置
     service-url:
-      defaultZone: http://127.0.0.1:7999/eureka/,http://127.0.0.1:8081/eureka/
+      defaultZone: http://127.0.0.1:7999/eureka/

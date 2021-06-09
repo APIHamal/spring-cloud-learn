@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: hystrix-server
+server:
+  port: 8083
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7999/eureka/ # Eureka服务端的注册中心
+feign: # 配置Feign对象(输出Feign的日志需要同时配置Feign的日志级别以及配置Logger的输出级别门槛)
+  client:
+    config:
+      #default:配置默认对所有的Feign对象生效
+      API-SERVER: #配置指定的Feign对象的属性(Feign对象被创建时Bean的名称直接为接口名称)
+        #@FeignClient中name和value的值只允许配置一个并且默认情况下相同
+        #因为实际上配置指定的Feign客户端相当于取@Feign的name属性(name或value属性都可以)
+        loggerLevel: FULL
+        connectTimeout: 3000
+        readTimeout: 5000
+logging: #定义Feign的日志输出级别(debug级别会打印出HTTP请求参数和方法)
+  level:
+    com.lizhengpeng.learn.feign: debug

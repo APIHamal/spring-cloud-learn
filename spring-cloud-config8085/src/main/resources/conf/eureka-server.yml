@@ -5,4 +5,4 @@ eureka: #配置Eureka服务端相关配置
     fetch-registry: false
     register-with-eureka: false
     service-url:
-      defaultZone: http://127.0.0.1:7999/eureka/,http://127.0.0.1:8081/eureka/ # Eureka服务端的注册中心
+      defaultZone: http://127.0.0.1:7999/eureka/ # Eureka服务端的注册中心

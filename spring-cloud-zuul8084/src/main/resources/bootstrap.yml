@@ -4,3 +4,17 @@ spring: # 启用SpringCloud Config的客户端的配置
       uri: http://127.0.0.1:8085/ #ConfigServer的HTTP连接地址
       profile: default            #加载指定的场景模式(默认为default表示加载类似zuul-server.yml等文件)
       name: zuul-server           #加载指定的文件的名称(指定名称即可不需要写全文件名zuul-server表示加载文件名称)
+      fail-fast: true # 服务无法连接到ConfigServer时快速失败
+#eureka:
+#  client:
+#    service-url: http://127.0.0.1:7999
+#spring:
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: config-server
+#      profile: default
+#      name: zuul-server
+#      fail-fast: true
+#      request-read-timeout: 3000
