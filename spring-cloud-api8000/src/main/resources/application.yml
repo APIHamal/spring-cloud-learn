@@ -12,3 +12,5 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://127.0.0.1:7999/eureka/ #Eureka服务端的交互地址
+logging:
+  config: classpath:log4j.xml

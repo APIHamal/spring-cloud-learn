@@ -4,6 +4,3 @@ spring:
       uri: http://127.0.0.1:8085/ # 配置Config Server的地址
       name: hystrix-server # 要从ConfigServer获取资源的名称
       profile: default # 要从ConfigServer获取文件所属的Profile
-feign:
-  client:
-    config:
