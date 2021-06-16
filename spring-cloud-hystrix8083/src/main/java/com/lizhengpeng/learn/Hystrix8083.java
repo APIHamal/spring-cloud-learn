@@ -3,6 +3,8 @@ package com.lizhengpeng.learn;
 import com.lizhengpeng.learn.feign.APIServiceFeign;
 import com.netflix.discovery.converters.Auto;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import feign.Feign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,13 +30,21 @@ public class Hystrix8083 {
         return apiServiceFeign.sayHello(name);
     }
 
+    @HystrixCommand(commandProperties={
+            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "5000")
+    })
     @GetMapping("/hystrix/sayHello")
     public String hystrixSayHello(String name){
         System.out.println("进入了hystrix/sayHello方法");
         return apiServiceFeign.sayHello(name);
     }
 
-    @HystrixCommand(fallbackMethod = "fallBack")
+    /**
+     * 配置Hystrix的超时时间
+     * @param name
+     * @return
+     */
+    @HystrixCommand(fallbackMethod = "fallBack",commandProperties = {@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "5")})
     @GetMapping("/sayHelloException")
     public String sayHelloException(String name) {
         return apiServiceFeign.sayHelloException(name);

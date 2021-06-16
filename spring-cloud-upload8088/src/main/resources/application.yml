@@ -1,0 +1,19 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: upload-server
+  servlet:
+    multipart:
+      enabled: true #开启Multipart文件上传的支持(默认为true表示开启文件上传的支持)
+      max-file-size: 5MB #单个上传文件的最大容量(每个单个文件的最大尺寸)
+      max-request-size: 10MB #一次上传文件的最大尺寸(一次上传多个文件的HTTP请求的最大容量)
+  thymeleaf:
+    cache: false
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7999/eureka/

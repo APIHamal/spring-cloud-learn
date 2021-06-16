@@ -1,6 +1,10 @@
 spring:
   application:
     name: zuul-server
+  servlet:
+    multipart:
+      max-file-size: 10MB #配置上传文件的单个文件最大尺寸
+      max-request-size: 10MB #配置上传多个文件最大容量
 server:
   port: 8084
 eureka:
@@ -10,11 +14,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:7999/eureka/ # Eureka服务端的注册中心
-zuul:
-  routes: # 配置Zuul的路由和相关属性
-    server_provide:
-      path: /service/**
-      serviceId: SERVER-PROVIDE
-    config_server:
-      path: /config/**
-      serviceId: CONFIG-SERVER

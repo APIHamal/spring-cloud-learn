@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>文件上传测试</h1>
+    <div>
+        <form method="post" th:action="@{/zuul/upload/uploadFile}" enctype="multipart/form-data">
+            <div>
+                请上传文件<input type="file" name="file">
+            </div>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</body>
+</html>

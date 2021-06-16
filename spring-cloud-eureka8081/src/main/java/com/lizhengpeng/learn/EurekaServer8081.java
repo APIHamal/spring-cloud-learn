@@ -23,6 +23,12 @@ public class EurekaServer8081 {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @GetMapping("/hello")
+    public String sayHello(){
+        System.out.println("EurekaServer接收到请求");
+        return "hello client";
+    }
+
     @GetMapping("/printMicroServiceByName")
     public List<String> printMicroServiceByName(String name){
         //获取指定的服务实例的信息

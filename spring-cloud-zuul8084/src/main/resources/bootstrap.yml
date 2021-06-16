@@ -5,6 +5,16 @@ spring: # 启用SpringCloud Config的客户端的配置
       profile: default            #加载指定的场景模式(默认为default表示加载类似zuul-server.yml等文件)
       name: zuul-server           #加载指定的文件的名称(指定名称即可不需要写全文件名zuul-server表示加载文件名称)
       fail-fast: true # 服务无法连接到ConfigServer时快速失败
+zuul:
+  ignored-services: '*' # 配置忽略直接代理所有Eureka中的服务
+  routes: # 配置Zuul的路由和相关属性
+    upload-service:
+      path: /upload/**
+      serviceId: upload-server
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000 #解决ZUUL上传文件超时的问题
+ribbon:
+  ConnectTimeout: 3000 #解决ZUUL上传文件超时的问题
+  ReadTimeout: 60000 #解决ZUUL上传文件超时的问题
 #eureka:
 #  client:
 #    service-url: http://127.0.0.1:7999

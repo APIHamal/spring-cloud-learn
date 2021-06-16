@@ -1,8 +1,15 @@
 eureka: #配置Eureka服务端相关配置
   instance:
-    instance-id: ${spring.application.name}:${server.port} # Eureka服务端的名称
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port} # Eureka服务端的名称
+    fetch-registry: true
+    register-with-eureka: true
   client:
-    fetch-registry: false
-    register-with-eureka: false
     service-url:
-      defaultZone: http://127.0.0.1:7999/eureka/ # Eureka服务端的注册中心
+      defaultZone: http://127.0.0.1:7999/eureka/ #,http://127.0.0.1:8081/eureka/ # Eureka服务端的注册中心
+#eureka:
+#  instance:
+#    lease-renewal-interval-in-seconds: 10 #指定Eureka客户端的心跳周期(Eureka客户端会在该指定时间内向EurekaServer发送心跳信息)
+#    lease-expiration-duration-in-seconds: 20 #指定Eureka客户端的失效时间(服务端在该时间内未收到心跳信息则会将eureka标记为过期)
+#server:
+#  eviction-interval-timer-in-ms: 5000 #Eureka扫描失效服务的时间间隔(EurekaClient在指定的时间内未发送心跳信息则服务端会认为Client
+                                       #已经失效并且会从注册表中将其剔除该时间为扫描Client是否过期的时间间隔)

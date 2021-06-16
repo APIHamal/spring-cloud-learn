@@ -1,0 +1,19 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: ribbon-server
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10 #配置心跳周期的时间
+    lease-expiration-duration-in-seconds: 15 #配置当前客户端的超时时间(服务端该时间内未接收到心跳信息则将当前客户端进行下线)
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:7999/eureka/
+eureka-server: #Ribbon客户端的名称(Ribbon与Eureka结合使用时该名称为注册到Eureka服务器中的名称)
+  ribbon:
+    listOfServers: 127.0.0.1:8081,127.0.0.1:7999 #显式的指定服务的服务器的地址
+
