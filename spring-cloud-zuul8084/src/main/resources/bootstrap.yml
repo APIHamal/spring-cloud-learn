@@ -33,3 +33,6 @@ ribbon:
 #      name: zuul-server
 #      fail-fast: true
 #      request-read-timeout: 3000
+logging:
+  level:
+    root: debug
