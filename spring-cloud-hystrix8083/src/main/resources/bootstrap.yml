@@ -4,3 +4,6 @@ spring:
       uri: http://127.0.0.1:8085/ # 配置Config Server的地址
       name: hystrix-server # 要从ConfigServer获取资源的名称
       profile: default # 要从ConfigServer获取文件所属的Profile
+      #label: master 配置分支的名称(git默认是master分支)
+  zipkin: #配置zipkin使用服务链路追踪
+    base-url: http://192.168.168.168:9411 # 配置zipkin的服务地址(增加服务链路追踪组件)

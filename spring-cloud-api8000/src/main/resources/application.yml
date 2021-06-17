@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: api-server
+  zipkin: #配置zipkin使用服务链路追踪
+    base-url: http://192.168.168.168:9411 # 配置zipkin的地址
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}-${server.port} #当前Eureka客户端在EurekaServer中状态名(该名称会显示在Eureka页面的Status栏)
@@ -13,4 +15,4 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:7999/eureka/ #Eureka服务端的交互地址
 logging:
-  config: classpath:log4j.xml
+  config: classpath:log4j2.xml

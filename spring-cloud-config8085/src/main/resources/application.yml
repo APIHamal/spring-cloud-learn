@@ -10,6 +10,9 @@ spring:
       server:
         native:
           search-locations: classpath:/conf/
+        #git:
+        # basedir: 使用git仓库配置config时服务会将远程仓库文件下载到本地中存储(baseDir指定存储文件默认在临时文件中)
+        # 如果远程git仓库不可用则直接使用本地仓库中内容返回
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

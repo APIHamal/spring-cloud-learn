@@ -19,3 +19,10 @@
 	  <url>https://maven.aliyun.com/repository/jcenter</url>
 	</mirror>
 </mirrors>
+
+###zipkin-server-exec.jar包下载地址(进入zipkin官方使用shell命令进行zipkin的下载)
+curl -sSL https://zipkin.io/quickstart.sh | bash -s
+1)直接使用java -jar zipkin-exec.jar启动zipkin服务即可
+java -jar zipkin.jar
+2)默认的端口号为9411 登录地址使用http://localhost:9411/zipkin/
+3)spring.zipkin.base-url: http://127.0.0.1:9411(配置zipkin的服务地址)
