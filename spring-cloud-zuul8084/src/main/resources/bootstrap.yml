@@ -7,6 +7,12 @@ spring: # 启用SpringCloud Config的客户端的配置
       fail-fast: true # 服务无法连接到ConfigServer时快速失败
   zipkin:
     base-url: http://192.168.168.168:9411 #增加zipkin服务链路追踪组件
+    sender:
+      type: web # 数据传输的方式(web表示以http报文方式向服务端传送[kafka\rabbit]分别是指向消息队列发送)
+  ###配置Sleuth的相关属性
+  sleuth:
+    sampler:
+      probability: 1.0 #采取数据的百分比(1.0表示100%也就是会收集所有的数据默认采样是0.1表示只收集10%数据[测试环境建议1来全面追踪生产环境保存默认即可])
 zuul:
   ignored-services: '*' # 配置忽略直接代理所有Eureka中的服务
   routes: # 配置Zuul的路由和相关属性
@@ -20,6 +26,7 @@ hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000 
 ribbon:
   ConnectTimeout: 3000 #解决ZUUL上传文件超时的问题
   ReadTimeout: 60000 #解决ZUUL上传文件超时的问题
+
 #eureka:
 #  client:
 #    service-url: http://127.0.0.1:7999
